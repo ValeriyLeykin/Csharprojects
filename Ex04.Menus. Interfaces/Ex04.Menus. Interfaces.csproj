@@ -40,7 +40,6 @@
     <Compile Include="IDoAction.cs" />
     <Compile Include="MainMenu.cs" />
     <Compile Include="MenuItem.cs" />
-    <Compile Include="MenuItemsCollection.cs" />
     <Compile Include="ComplexMenuItem.cs" />
   </ItemGroup>
   <ItemGroup>

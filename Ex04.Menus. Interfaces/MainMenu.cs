@@ -8,7 +8,7 @@ namespace Ex04.Menus.Interfaces
     {
         private const int k_BackRequest = 0;
         private readonly ComplexMenuItem r_menuItemsRoot;
-        private ComplexMenuItem m_CurrentItem;
+        private ComplexMenuItem m_CurrentComplexItem;
 
         public ComplexMenuItem RootItem 
         {
@@ -20,73 +20,55 @@ namespace Ex04.Menus.Interfaces
 
         public MainMenu()
         {
-            r_menuItemsRoot = new ComplexMenuItem("Main Menu");
-            m_CurrentItem = r_menuItemsRoot;
+            r_menuItemsRoot = new ComplexMenuItem("Main Menu", null);
+            m_CurrentComplexItem = r_menuItemsRoot;
         }
 
       
         public void Show()
         {
             bool quitRequest = false;
+            int userChoice;
 
             while (!quitRequest)
             {
-                // print current  item sub items
-                m_CurrentItem.Activate();
-                // gets input from the user
-                int input = getInput();
+                m_CurrentComplexItem.Activate();
 
-                // Exit \ Back request
-                if (input == k_BackRequest)
+                userChoice = getInput();
+
+                if (userChoice == k_BackRequest)
                 {
-                    // if current menu item is root - Exit
-                    if (m_CurrentItem == r_menuItemsRoot)
+                    if (m_CurrentComplexItem == r_menuItemsRoot)
                     {
                         quitRequest = true;
                     }
-                    // else - go back
                     else
                     {
-                        m_CurrentItem = m_CurrentItem.ParentItem;
+                        m_CurrentComplexItem = m_CurrentComplexItem.ParentItem;
                     }
                 }
                 else
                 {
-                    // get the chosen item
-                    MenuItem chosenItem = m_CurrentItem.GetChosenItem(input - 1);
-                    if (isComplexItem(chosenItem))
-                    {
-                        m_CurrentItem = chosenItem as ComplexMenuItem;
-                    }
-                    else
-                    {
-                        // perform action
-                        chosenItem.Activate();
-                        Console.ReadKey();
-                    }
+                    m_CurrentComplexItem = m_CurrentComplexItem.ChooseItem(userChoice - 1);
                 }
             }
         }
 
-        private bool isComplexItem(MenuItem menuItem)
-        {
-            return (menuItem is ComplexMenuItem);
-        }
-
-        private bool checkInputValid(string input, out int checkedInput)
+        private bool checkInputValid(string i_Input, out int o_CheckedInput)
         {
             bool result = false;
-            result = Int32.TryParse(input, out checkedInput);
+            result = Int32.TryParse(i_Input, out o_CheckedInput);
+
             if (result)
             {
                 result = false;
-                // check the number is in the borders of collection or it is BackRequest
-                if (checkedInput <= m_CurrentItem.SubItemsCount
-                    && checkedInput >= k_BackRequest)
+
+                if (o_CheckedInput <= m_CurrentComplexItem.SubItemsQuantity && o_CheckedInput >= k_BackRequest)
                 {
                     result = true;
                 }
             }
+
             return result;
         }
 
@@ -94,6 +76,7 @@ namespace Ex04.Menus.Interfaces
         {
             string input;
             int checkedInput;
+
             Console.WriteLine("Please enter your choise:");
             input = Console.ReadLine();
             while (!checkInputValid(input, out checkedInput))
@@ -101,6 +84,7 @@ namespace Ex04.Menus.Interfaces
                 Console.WriteLine("Invalid input, please try again:");
                 input = Console.ReadLine();
             }
+
             return checkedInput;
         }
     }

@@ -8,9 +8,9 @@ namespace Ex04.Menus.Interfaces
     {
         private readonly string r_ActionName;
         
-        public Action(string actionName)
+        public Action(string i_ActionNamea)
         {
-            r_ActionName = actionName;
+            r_ActionName = i_ActionNamea;
         }
 
         public String ActionName
