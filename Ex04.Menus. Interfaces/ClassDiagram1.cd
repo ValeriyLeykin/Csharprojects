@@ -1,27 +1,28 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="Ex04.Menus.Interfaces.MainMenu">
-    <Position X="8.5" Y="1.75" Width="2.75" />
+    <Position X="9.75" Y="2.5" Width="2.75" />
     <TypeIdentifier>
-      <HashCode>AAAAAAEAAAAAAAAAAAAAAgAAQAAEEAAIAQAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAEAAAAAAAAAAAAAAgAAAAAEEAAIAQAACAAAAAA=</HashCode>
       <FileName>MainMenu.cs</FileName>
     </TypeIdentifier>
-    <ShowAsAssociation>
-      <Field Name="r_menuItemsRoot" />
-      <Field Name="m_CurrentItem" />
-    </ShowAsAssociation>
   </Class>
   <Class Name="Ex04.Menus.Interfaces.MenuItem">
-    <Position X="5" Y="5.25" Width="1.5" />
+    <Position X="5.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>EAAAAAAAAAAAAABAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>MenuItem.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Ex04.Menus.Interfaces.ComplexMenuItem">
-    <Position X="4.75" Y="1.75" Width="2" />
+    <Position X="6.5" Y="3.75" Width="2" />
+    <AssociationLine Name="r_ParentItem" Type="Ex04.Menus.Interfaces.ComplexMenuItem">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-0.098" Y="0.318" />
+      </MemberNameLabel>
+    </AssociationLine>
     <TypeIdentifier>
-      <HashCode>AAAAAAAKAAAAAAhAAIBAAAAAAAAAAIAAABAAAAgACAA=</HashCode>
+      <HashCode>AAAAAAICAAAAAABAAIBAAAAAAAAAAIAAABAACAgACAA=</HashCode>
       <FileName>ComplexMenuItem.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -29,7 +30,7 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="Ex04.Menus.Interfaces.ActionMenuItem">
-    <Position X="0.5" Y="5" Width="1.5" />
+    <Position X="4.5" Y="3.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAACAAAAQAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>ActionMenuItem.cs</FileName>
@@ -40,14 +41,14 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="Ex04.Menus.Interfaces.Action">
-    <Position X="0.5" Y="2.25" Width="1.5" />
+    <Position X="2" Y="1.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAA=</HashCode>
       <FileName>Action.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Interface Name="Ex04.Menus.Interfaces.IDoAction">
-    <Position X="2.5" Y="2.25" Width="1.5" />
+    <Position X="1.25" Y="4" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA=</HashCode>
       <FileName>IDoAction.cs</FileName>

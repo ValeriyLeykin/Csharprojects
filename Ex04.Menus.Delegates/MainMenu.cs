@@ -2,28 +2,28 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Ex04.Menus.Interfaces
+namespace Ex04.Menus.Delegates
 {
     public class MainMenu
     {
         private const int k_BackRequest = 0;
-        private readonly ComplexMenuItem r_MenuItemsRoot;
+        private readonly ComplexMenuItem r_menuItemsRoot;
         private ComplexMenuItem m_CurrentComplexItem;
 
-        public ComplexMenuItem RootItem 
+        public ComplexMenuItem RootItem
         {
             get
             {
-                return r_MenuItemsRoot;
+                return r_menuItemsRoot;
             }
         }
 
         public MainMenu()
         {
-            r_MenuItemsRoot = new ComplexMenuItem("Main Menu", null);
-            m_CurrentComplexItem = r_MenuItemsRoot;
+            r_menuItemsRoot = new ComplexMenuItem("Main Menu", null);
+            m_CurrentComplexItem = r_menuItemsRoot;
         }
-      
+
         public void Show()
         {
             bool quitRequest = false;
@@ -37,7 +37,7 @@ namespace Ex04.Menus.Interfaces
 
                 if (userChoice == k_BackRequest)
                 {
-                    if (m_CurrentComplexItem == r_MenuItemsRoot)
+                    if (m_CurrentComplexItem == r_menuItemsRoot)
                     {
                         quitRequest = true;
                     }

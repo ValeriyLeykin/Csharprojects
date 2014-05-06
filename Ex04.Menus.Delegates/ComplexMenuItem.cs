@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Ex04.Menus.Interfaces
+namespace Ex04.Menus.Delegates
 {
-    public class ComplexMenuItem:MenuItem
+    public class ComplexMenuItem : MenuItem
     {
         private readonly List<MenuItem> r_MenuItemsCollection;
         private readonly ComplexMenuItem r_ParentItem;
@@ -16,8 +16,8 @@ namespace Ex04.Menus.Interfaces
                 return r_ParentItem;
             }
         }
-        
-        internal int SubItemsQuantity 
+
+        internal int SubItemsQuantity
         {
             get
             {
@@ -37,12 +37,6 @@ namespace Ex04.Menus.Interfaces
             ComplexMenuItem subItem = new ComplexMenuItem(i_Name, this);
             r_MenuItemsCollection.Add(subItem);
             return subItem;
-        }
-
-        public void AddActionSubItem(string i_Name, Action i_Action, IDoAction i_Observer)
-        {
-            ActionMenuItem subItem = new ActionMenuItem(i_Name, i_Action, i_Observer);
-            r_MenuItemsCollection.Add(subItem);
         }
 
         private MenuItem getChosenItem(int i_MenuItemNum)
@@ -86,7 +80,13 @@ namespace Ex04.Menus.Interfaces
 
             Console.WriteLine(menuItems);
         }
-         
+
+        public void AddActionSubItem(string i_Name, DoActionDelegate i_ActionDelegate )
+        {
+            ActionMenuItem subItem = new ActionMenuItem(i_Name, i_ActionDelegate);
+            r_MenuItemsCollection.Add(subItem);
+        }
+
         internal ComplexMenuItem ChooseItem(int i_Item)
         {
             MenuItem chosenItem = getChosenItem(i_Item);
